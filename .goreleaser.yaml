@@ -1,0 +1,32 @@
+version: 2
+project_name: todo_cli
+
+builds:
+  - id: todo_cli
+    main: ./main.go
+    binary: todo_cli
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+
+archives:
+  - id: todo_cli
+    builds:
+      - todo_cli
+    format: tar.gz
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+
+checksum:
+  name_template: "{{ .ProjectName }}_{{ .Version }}_checksums.txt"
+
+release:
+  disabled: false
+  github:
+    owner: J0n1i
+    name: "{{ .Tag }}"
+    draft: true
+    prerelease: true
