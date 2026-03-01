@@ -24,9 +24,4 @@ checksum:
   name_template: "{{ .ProjectName }}_{{ .Version }}_checksums.txt"
 
 release:
-  disable: false
-  github:
-    owner: J0n1i
-    name: "{{ .Tag }}"
-    draft: true
-    prerelease: true
+  disable: true
